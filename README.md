@@ -4,25 +4,18 @@
 An OpenSCAD script to generate 3D printable STL files for cable raceways, with matching lids.  Many optional features, including:
 
 * fully parametric width, height, and length
-
 * separate length and width variables for the lid, for more flexibility
-
 * parametric cable slots that maintain static spacing across any length, width, or height of raceway
-
 * optional keyholes to improve cable carrying capacity of each slot without the need to use wider slots
-
 * optional mounting holes along raceway bottom, on user defined centers, starting at a user defined distance from raceway end
-
 * imprinted text on the lid
-
 * able to render just the raceway, just the lid, or both at once for maximum versatility
-
 * optional "skeletonized" raceway with punched out raceway bottom saves material
 
 
 ## Getting Started
 
-To use this file you'll need OpenSCAD: https://www.openscad.org
+To use this file you'll need a copy of OpenSCAD(it's free!): https://www.openscad.org
 
 ## Usage
 
@@ -36,7 +29,7 @@ Always print a short section of raceway to test your variables, BEFORE committin
 
 ## Built With
 
-* [OpenSCAD](https://www.openscad.org/)
+[OpenSCAD](https://www.openscad.org/)
 
 ## License
 

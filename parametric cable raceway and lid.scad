@@ -1,6 +1,6 @@
 /*
  * Parametric Cable Raceway and Lid
- * -----------------------------------------
+ * =======================================================================================
  * remixed from an amazing design by Thomas Hessling
  * remix by Kayos Maker
  *
@@ -19,67 +19,71 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see https://www.gnu.org/licenses/.*
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
  *
- *  Current Version v2.60 (5-18-2021)
+ * ========================================================================================
  *
- *  Changelog for Kayos Maker remix
- *  v2.60 - add plastic saving "skeletonizing" feature for raceway base 
- *  v2.50 - fix User Variables section formatting to work with customizer
- *  v2.46 - fix slot count equation to speed rendering(and count accurately)
- *  v2.45 - add optional raceway mounting holes
- *        - fix some erroneous math and remove redundant factors 
- *        - seperated slot rounding from keyholes and fixed how keyholes are located to prevent model errors
- *  v2.40 - remove resource intensive rcube function for slots and add keyhole instead.  both renders faster, and increases versatility
- *  v2.33 - remove unwanted optional lid style
- *  v2.32 - add seperate lid width variable
- *  v2.31 - add feature wishlist to motivate myself  
- *  v2.30 - add separate lid length variable
- *  v2.21 - fixed some really dumb equation errors of mine
- *  v2.20 - rounded bottoms of slots using rcube function(hulled spheres)
- *  v2.10 - change slot assignment and spacing variables to stay static across different lengths of raceway
- *  v2.00 - change variable naming and formatting to my taste  (my neurosis, no insult to the original author)
- *  v2    - establish new version for my fork/changes
+ *      Features
+ * - fully parametric width, height, and length
+ * - separate length and width variables for the lid, for increased flexibility
+ * - parametric cable slots that maintain static spacing across any length, width, or height of raceway
+ * - optional keyholes to improve cable carrying capacity of each slot without the need to use wider slots
+ * - optional mounting holes along raceway bottom, on user defined centers, starting at a user defined distance from raceway end
+ * - imprinted text on the lid
+ * - able to render just the raceway, just the lid, to allow the creation of separate stl's
+ * - optional "skeletonized" raceway with punched out raceway bottom saves material(may be incompatible with mounting holes)
+ *
+ *      USAGE NOTES
+ *
+ *
+ * ========================================================================================
+ *
+ *      Current Version v2.60 (5-18-2021)
+ *
+ *      Changelog
+ * v2.60 - add plastic saving "skeletonizing" feature for raceway base    (5-18-2021)
+ * v2.50 - fix User Variables section formatting to work with customizer
+ * v2.46 - fix slot count equation to speed rendering(and count accurately)
+ * v2.45 - add optional raceway mounting holes
+ *       - fix some erroneous math and remove redundant factors 
+ *       - seperated slot rounding from keyholes and fixed how keyholes are located to prevent model errors
+ * v2.40 - remove resource intensive rcube function for slots and add keyhole instead.  both renders faster, and increases versatility
+ * v2.33 - remove unwanted optional lid style
+ * v2.32 - add seperate lid width variable
+ * v2.31 - add feature wishlist to motivate myself  
+ * v2.30 - add separate lid length variable
+ * v2.21 - fixed some really dumb equation errors of mine
+ * v2.20 - rounded bottoms of slots using rcube function(hulled spheres)
+ * v2.10 - change slot assignment and spacing variables to stay static across different lengths of raceway
+ * v2.00 - change variable naming and formatting to my taste  (my neurosis, no insult to the original author)
+ * v2    - establish new version for my fork/changes
  * 
- * ========================================
+ * =======================================================================================
+ *       
+ *      Original Author's ChangeLog
+ * v1.1a   - Changed the license to GPLv3. (2019-09-21)
+ * v1.1    - Add some custom text to your duct's cover (2019-08-03)
+ *         - Option to create a cover with the same width as the duct, for narrow places
+ * v1.0    - model creation works, first print successful. (2019-07-28)
+ * ========================================================================================
  *
- * https://www.dream-dimensions.de/
- * https://www.thingiverse.com/thing:3775502
- *
- * 
- * ChangeLog:
- *  ## v1.1a (2019-09-21)
- *  ### Changes
- *  - Changed the license to GPLv3.
- *
- *  ## v1.1  (2019-08-03)
- *  ### Added
- *    - Add some custom text to your duct's cover
- *  - Option to create a cover with the same width as the duct, for narrow places
- *
- *  ## v1.0  (2019-07-28)
- *  - model creation works, first print successful.
- */
-
-
-//  Kayos Maker's Feature Wishlist
-//  -entry port option for single large diameter hole in raceway bottom, located wherever the user wants
-//  -corner pieces
-//  -optional interlocking ends for long runs (only on raceways, not lids. kinda like those wooden toy train tracks is what im thinking)
-//  -optional cable hold down clips that match the selected slot width(primarily to assist layout before the lids are in place)
-//  -optional slots in the lid to reduce material usage, improve airflow, and maybe look cool
-//  -insertable text as seperate item (should be easyish to add this using the code already in the file, with perhaps a dedicated tolerance variable, and added to the list of "what to render")
-//  -optional 2 line text stamping for lids 
-//  -optional logo/vector file stamping for lids
-//  -optional honeycomb style lids
-//  -optional cable combs at intervals  (steal code from literal comb design found on thingi)
-//  -option to center the slots across the raceway length, at the given spacing, instead of starting with a full tooth and ending where it ends, even if its mid slot.  this way the spacing would be locked, but the first and last tooth of the raceway would be equal in length to each other
-//  -same as above but for mounting holes(optional)
-//  -add countersink option to mounting holes
-//  -fix rw_height to reflect combined outside dimensions rather than just the raceway height - half assed fix in place until I can decipher original author's equations - rw_height is used in damn near every calculation for the 2d shapes that are extruded and unweaving the mess to fix the height problem properly might be over my head.  the hack solution I put in place works and gives a raceway+lid with an overall height that match the figure defined for the variable.
-
-
-//-------------------------------------------------------------------------------------------------
+ *      Feature Wishlist
+ * - entry port option for single large diameter hole in raceway bottom, located wherever the user wants
+ * - corner pieces
+ * - optional interlocking ends for long runs (only on raceways, not lids. kinda like those wooden toy train tracks is what im thinking)
+ * - optional cable hold down clips that match the selected slot width(primarily to assist layout before the lids are in place)
+ * - optional slots in the lid to reduce material usage, improve airflow, and maybe look cool
+ * - insertable text as seperate item (should be easyish to add this using the code already in the file, with perhaps a dedicated tolerance variable, and added to the list of "what to render")
+ * - optional 2 line text stamping for lids 
+ * - optional logo/vector file stamping for lids
+ * - optional honeycomb style lids
+ * - optional cable combs at intervals  (steal code from literal comb design found on thingi)
+ * - option to center the slots across the raceway length, at the given spacing, instead of starting with a full tooth and ending where it ends, even if its mid slot.  this way the spacing would be locked, but the first and last tooth of the raceway would be equal in length to each other
+ * - same as above but for mounting holes(optional)
+ * - add countersink option to mounting holes
+ * - fix rw_height to reflect combined outside dimensions rather than just the raceway height - half assed fix in place until I can decipher original author's equations - rw_height is used in damn near every calculation for the 2d shapes that are extruded and unweaving the mess to fix the height problem properly might be over my head.  the hack solution I put in place works and gives a raceway+lid with an overall height that match the figure defined for the variable.
+*/
+// =========================================================================================
 //      User Definable Variables
 //      all measurements in mm
 
@@ -135,7 +139,7 @@ mnt_hole_dia = 4.5;
 
 /*[MATERIAL SAVER RACEWAY]*/
 //Enables plastic saving skeletonized cutouts along raceway bottom.  May not work with very short raceways. - 0:false, 1:true
-saver_track = 0; //[0,1]
+saver_track = 1; //[0,1]
 
 
 /*[LID TEXT]*/
